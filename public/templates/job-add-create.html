@@ -1,0 +1,656 @@
+<div class="main" role="main">
+    <div id="create_page" ng-if="create_page" class="page-content">
+        <div class="page-head">
+            <div class="container">
+                <a class="page-title" href="/">
+                <i class="fa fa-long-arrow-left"></i>
+                  back to Jobs
+                </a>
+                <div class="wizard-head">
+                    <a href="#" class="active">
+                    <span>1</span>
+                    Create Job Ad
+                </a>
+                    <a href="#" ng-click="!(myForm.job_title.$valid && myForm.company_email.$valid && myForm.job_des.$valid && !(!form.email_to.length > 0 && form.send_resume) && myForm.about_company.$valid && (myForm.how_apply.$valid || myForm.email_to.$valid) && (form.email_to==form.send_resume_conf_email)) ? '' : redirectReview()"
+                        ng-disabled="!(myForm.job_title.$valid && myForm.company_email.$valid && myForm.job_des.$valid && !(!form.email_to.length > 0 && form.send_resume) && myForm.about_company.$valid && (myForm.how_apply.$valid || myForm.email_to.$valid) && (form.email_to==form.send_resume_conf_email))">
+                    <span>2</span>
+                    Preview
+                </a>
+                    <a href="#" ng-click="!(myForm.job_title.$valid && myForm.company_email.$valid && myForm.job_des.$valid && !(!form.email_to.length > 0 && form.send_resume) && myForm.about_company.$valid && (myForm.how_apply.$valid || myForm.email_to.$valid) && (form.email_to==form.send_resume_conf_email)) ? '' : redirectPayment()"
+                        ng-disabled="!(myForm.job_title.$valid && myForm.company_email.$valid && myForm.job_des.$valid && !(!form.email_to.length > 0 && form.send_resume) && myForm.about_company.$valid && (myForm.how_apply.$valid || myForm.email_to.$valid) && (form.email_to==form.send_resume_conf_email))">
+                    <span>3</span>
+                    Pay
+                </a>
+                </div>
+                <!--End wizard-head-->
+            </div>
+            <!--End container-->
+        </div>
+        <!--End Page-head-->
+        <div class="container">
+            <div class="form-wizard">
+                <form class="form" method="post" ng-model="form" name="myForm" enctype="multipart/form-data">
+                    <div class="brdr-btm-box margin-bottom-30">
+                        <h2 class="title has-border text-red">
+                            create ad
+                        </h2>
+                        <span class="small-txt">Ads expire after 30 days</span>
+                    </div>
+                    <div class="gray-box">
+                        <h2 class="subtitle">
+                            tell us about the position
+                        </h2>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">job title</label>
+                                <div class="col-md-7">
+                                    <input class="form-control" required type="text" placeholder="“Senior Designer” or “Rails Programmer”" name="job_title" ng-model="form.job_title"
+                                    />
+                                    <span class="error-msg" ng-if="myForm.job_title.$touched && myForm.job_title.$invalid">Please fill the Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">job type</label>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="job_type" ng-model="form.job_type">
+                                        <option selected value="">Please Select</option>
+                                        <option>Unspecified</option>
+                                        <option>Permanent</option>
+                                        <option>Contract</option>
+                                        <option>Internship</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3 label-sm">category</label>
+                                <div class="col-md-7">
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="Design" name="category" ng-model="form.category" ng-value="'Design'">
+                                        <label for="Design" class="cat-label">Design</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="Programing" name="category" ng-model="form.category" ng-value="'Programming'">
+                                        <label for="Programing" class="cat-label">Programming</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="customer-support" name="category" ng-model="form.category" ng-value="'Customer Support'">
+                                        <label for="customer-support" class="cat-label">customer support</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="copywriting" name="category" ng-model="form.category" ng-value="'Writing'">
+                                        <label for="copywriting" class="cat-label">writing</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="devops" name="category" ng-model="form.category" ng-value="'Devops & Sysadmin'">
+                                        <label for="devops" class="cat-label">devops & sysadmin</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="business" name="category" ng-model="form.category" ng-value="'Business'">
+                                        <label for="business" class="cat-label">business</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item radio-block">
+                                        <input type="radio" id="all" name="category" ng-model="form.category" ng-value="'Other'" />
+                                        <label for="all" class="cat-label">other</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                </div>
+                                <!--End Col-md-7-->
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">Time Zone</label>
+                                <div class="col-md-2">
+                                    <select ng-options="item as item.utc for item in timezone" class="form-control" name="timezone" ng-model="form.timezone"></select>
+                                </div>
+                                <label class="col-md-2">
+                                    Current UTC Time: 
+                                </label>
+                                <div class="col-md-2">
+                                    <span id="time"></span>
+                                </div>
+                            </div>
+                            <!--End Col-md-7-->
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3 label-sm label-grouped">compensation (<i>Optional </i>)</label>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="currency col-sm-6">
+                                            <span class="label-sm"><i>currency</i></span>
+                                            <select ng-options="item as item.name for item in countries track by item.sy" class="form-control" name="currency" ng-model="form.currency">
+                                            </select>
+                                        </div>
+                                        <div class="price-range col-sm-6">
+                                            <div class="row m0">
+                                                <div class="min-price col-sm-6">
+                                                    <span class="label-sm"><i>range</i></span>
+                                                    <input class="form-control" type="text" id="minrange" name="range_min" ng-model="form.min_range" placeholder="MIN">
+                                                </div>
+                                                <!--End min-price-->
+                                                <div class="max-price col-sm-6">
+                                                    <span class="label-sm">&nbsp;</span>
+                                                    <input class="form-control" id="maxrange" type="text" name="range_max" ng-model="form.max_range" placeholder="MAX">
+                                                </div>
+                                            </div>
+                                            <!--End min-price-->
+                                        </div>
+
+                                        <!--End price-range-->
+                                        <div class="price-kind col-xs-12">
+                                            <div class="radio-item">
+                                                <input type="radio" id="yearly" name="compensation" ng-model="form.compensation" ng-value="'Yearly'">
+                                                <label for="yearly" class="cat-label">yearly</label>
+                                            </div>
+                                            <!--End Radio item-->
+                                            <div class="radio-item">
+                                                <input type="radio" id="hourly" name="compensation" ng-model="form.compensation" ng-value="'Hourly'">
+                                                <label for="hourly" class="cat-label">hourly</label>
+                                            </div>
+                                            <!--End Radio item-->
+                                        </div>
+                                        <!--End price-kind-->
+                                    </div>
+                                    <!--End Row-->
+                                </div>
+                                <!--End Col-md-7-->
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3 label-sm">Visa Sponsor</label>
+                                <div class="col-md-7">
+                                    <div class="radio-item">
+                                        <input type="radio" id="yes" name="visa_psponcer" ng-model="form.visa_psponcer" ng-value="'Yes'" value="Yes">
+                                        <label for="yes" class="cat-label">yes</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="radio-item">
+                                        <input type="radio" id="no" name="visa_psponcer" ng-model="form.visa_psponcer" ng-value="'No'" value="No" selected>
+                                        <label for="no" class="cat-label">no</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">key skills</label>
+                                <div class="col-md-7">
+                                    <chips ng-model="form.key_skills" render="render(data)">
+                                        <chip-tmpl>
+                                            <div class="default-chip">
+                                                {{chip.name}}
+                                                <span class="glyphicon glyphicon-remove" remove-chip="deleteChip(data)"></span>
+                                            </div>
+                                        </chip-tmpl>
+                                        <input chip-control></input>
+                                    </chips>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">job description</label>
+                                <div class="col-md-7">
+                                    <textarea name="job_des" ng-model="form.job_des" rows="3" class="form-control" ui-tinymce="tinymceOptions" required></textarea>
+                                    <span class="error-msg" ng-if="myForm.job_des.$touched && myForm.job_des.$invalid">Please fill the Details</span>
+                                </div>
+                                <!--End Col-md-7-->
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3">how to apply</label>
+                                <div class="col-md-7">
+                                    <textarea name="how_apply" ng-model="form.how_apply" class="form-control" placeholder="Send Resume to or Apply at" required></textarea>
+                                    <div class="or-spacer">OR</div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="send-resume" name="send_resume" ng-model="form.send_resume" />
+                                        <label for="send-resume" class="cat-label">Send resumes through us directly to your email</label>
+                                    </div>
+                                    <!--End Radio item-->
+                                    <div class="row" id="send-resume-email-section" ng-if="form.send_resume">
+                                        <div class="col-sm-6">
+                                            <label>Email to</label>
+                                            <input class="form-control" type="email" name="email_to" required ng-model="form.email_to" placeholder="enter email address..."
+                                                email />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Confirm email</label>
+                                            <input ng-class="{'error-msg': 
+                                            (form.email_to == form.send_resume_conf_email ? false:true), 'succ-msg': 
+                                            ((form.email_to == form.send_resume_conf_email) && form.email_to.length > 0 ? true : false)}"
+                                                class="form-control" type="email" name="send_resume_conf_email" ng-model="form.send_resume_conf_email"
+                                                placeholder="enter email address again...">
+                                        </div>
+                                    </div>
+                                    <span class="error-msg" ng-if="(myForm.email_to.$touched && myForm.email_to.$invalid) && form.send_resume">Please fill the Details</span>
+                                    <span class="error-msg" ng-if="(myForm.how_apply.$touched && myForm.how_apply.$invalid) && !form.send_resume">Please fill the Details</span>
+                                </div>
+                                <!--End Col-md-7-->
+                            </div>
+                        </div>
+                        <!--End Form-group-->
+                    </div>
+                    <!--End Box-Content-->
+                    <div class="brdr-btm-box margin-bottom-30">
+                        <h2 class="title has-border text-red">
+                            About Your company
+                        </h2>
+                    </div>
+                    <!--End Box-Title-->
+                    <div class="gray-box">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3">name</label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="about_company" ng-model="form.about_company" required>
+                                    <span class="error-msg" ng-if="myForm.about_company.$touched && myForm.about_company.$invalid">Please fill the Details</span>
+                                </div>
+                            </div>
+                            <!--End form-group-->
+                            <div class="form-group">
+                                <label class="col-md-3">logo</label>
+                                <div class="col-md-7">
+                                    <div class="file-upload">
+                                        <div class="file-icon">
+                                            Choose file
+                                        </div>
+                                        <div class="file-body">
+                                            <p class="text">Optional</p>
+                                        </div>
+                                        <input class="custom-input" type="file" accept="image/jpeg, image/png" name="user_image" ng-model="form.user_image" onchange="angular.element(this).scope().setImage(this.files)"
+                                        />
+                                    </div>
+                                    <p class="text-left">{{ img_name }}</p>
+                                </div>
+                            </div>
+                            <!--End form-group-->
+                            <div class="form-group">
+                                <label class="col-md-3">url</label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="url" ng-model="form.url">
+                                </div>
+                            </div>
+                            <!--End form-group-->
+                            <div class="form-group">
+                                <label class="col-md-3">Email</label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="email" name="company_email" required ng-model="form.company_email">
+                                    <span class="error-msg" ng-if="myForm.company_email.$touched && myForm.company_email.$invalid">Please fill the Details</span>
+                                </div>
+                            </div>
+                            <!--End form-group-->
+                        </div>
+                        <!--End Row-->
+                    </div>
+                    <!--End Box-content-->
+                    <div class="brdr-btm-box margin-bottom-30">
+                        <h2 class="title has-border text-red">
+                            make your posting stand out
+                        </h2>
+                    </div>
+                    <!--End Box-Title-->
+                    <div class="gray-box">
+                        <p class="custom-p">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada imperdiet lorem eu ornare. Integer congue lacus
+                            id est mollis fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada
+                            imperdiet lorem eu ornare <span class="text-blue">for only ${{ highlighted_job_price }}</span>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="highlight" value="yes" name="highlight_job" ng-model="form.highlight_job" ng-click="add_total()">
+                                    <label for="highlight" class="cat-label">
+                                            yes highlight my job ad
+                                        </label>
+                                </div>
+                                <!--End checkbox-item-->
+                            </div>
+                            <div class="col-md-5 text-center">
+                                <img src="{{img_path}}/assets/highlight.png">
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Box-content-->
+                    <div class="gray-box">
+                        <p class="custom-p">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada imperdiet lorem eu ornare. Integer congue lacus
+                            id est mollis fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada
+                            imperdiet lorem eu ornare <span class="text-blue">for only ${{featured_job_price}}</span>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="feature_job" ng-model="form.feature_job" id="feature" value="yes feature" ng-click="add_total1()">
+                                    <label for="feature" class="cat-label">
+                                            yes hot feature my job ad
+                                        </label>
+                                </div>
+                                <!--End checkbox-item-->
+                            </div>
+                            <div class="col-md-5 text-center">
+                                <img src="{{img_path}}/assets/feature.png">
+                            </div>
+                        </div>
+                        <!--End Row-->
+                    </div>
+                    <!--End Box-content-->
+                    <button type="button" class="btn-submit" ng-click="redirectReview()" ng-disabled="!(myForm.job_title.$valid && myForm.company_email.$valid && myForm.job_des.$valid && !(!form.email_to.length > 0 && form.send_resume) && myForm.about_company.$valid && (myForm.how_apply.$valid || myForm.email_to.$valid) && (form.email_to==form.send_resume_conf_email))">                                 
+                        continue 
+                    </button>
+                </form>
+                <!--End Form-->
+            </div>
+            <!--End Form-Wizard-->
+        </div>
+        <!--End container-->
+    </div>
+    <!--End Page-content-->
+    <div id="review_page" ng-if="review_page" class="page-content">
+        <div class="page-head">
+            <div class="container">
+                <a class="page-title" ng-click="redirectCreate()">
+                <i class="fa fa-long-arrow-left"></i>
+                back to Create Job
+            </a>
+                <div class="wizard-head">
+                    <a href="#" ng-click="redirectCreate()">
+                    <span>1</span>
+                    Create Job Ad
+                </a>
+                    <a href="#" class="active">
+                    <span>2</span>
+                    Preview
+                </a>
+                    <a href="#" ng-click="redirectPayment()">
+                    <span>3</span>
+                    Pay
+                </a>
+                </div>
+                <!--End wizard-head-->
+            </div>
+            <!--End container-->
+        </div>
+        <!--End Page-head-->
+        <div class="container">
+            <div class="brdr-btm-box margin-bottom-30">
+                <h2 class="title has-border text-red">
+                    Preview your Ad
+                </h2>
+                <span class="small-txt">Ads expire after 30 days</span>
+            </div>
+            <div class="job-post-wrap">
+                <div class="gray-box job-post-item">
+                    <div class="job-post-head">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h3 class="job-post-title">
+                                    {{ form.job_title }}
+                                </h3>
+                                <!--End job-post-title-->
+                                <h4 class="job-post-subtitle">
+                                    {{ form.category }}
+                                </h4>
+                                <!--End job-post-subtitle-->
+                                <h4 class="job-post-subtitle">
+                                    {{ form.about_company }}
+                                </h4>
+                                <!--End job-post-subtitle-->
+                                <div class="job-post-links" ng-bind-html="formUrl(form.url)">
+                                    <a href="{{form.url}}" class="custom-links" target="_blank">
+                                        {{ form.url }}
+                                    </a>
+                                </div>
+                                <!--End job-post-links-->
+                                <div class="job-post-visa">
+                                    <span>Visa Sponsor:</span>{{ form.visa_psponcer }}
+                                </div>
+                                <!--End job-post-visa-->
+                            </div>
+                            <!--End col-md-9-->
+                            <div class="col-md-3">
+                                <div class="job-post-author">
+                                    <img src="{{user_image}}" id="user_img">
+                                </div>
+                                <!--End job-post-author-->
+                            </div>
+                            <!--End col-md-3-->
+                        </div>
+                        <!--End row-->
+                    </div>
+                    <!--End job-post-head-->
+                    <div class="job-post-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h3 ng-if="form.min_range && form.max_range" class="subtitle">Compensation Range</h3>
+                                <p ng-if="form.min_range && form.max_range">The budgeted compensation range for this role is {{ form.currency.sy }} {{form.min_range
+                                    }} to {{ form.currency.sy }} {{ form.max_range }} {{ form.compensation }}.
+                                </p>
+                                <h3 class="subtitle" ng-if="form.key_skills">Key Skills</h3>
+                                <ul class="tags bg-no-tags">
+                                    <li ng-repeat="skill in form.key_skills">{{ skill.name }}</li>
+                                </ul>
+                                <!--End tags-->
+                                <h3 class="subtitle">Job Description</h3>
+                                <div class="job-des" ng-bind-html="trustAsHtml(job_des)"></div>
+
+                            </div>
+                            <!--End col-md-9-->
+                        </div>
+                        <!--End row-->
+                    </div>
+                </div>
+                <div class="gray-box">
+                    <!--End job-post-body-->
+                    <div class="job-post-contact" ng-if="form.how_apply || form.send_resume ">
+                        <h3 class="subtitle">APPLY FOR THIS POSITION</h3>
+                        <div ng-if="!form.send_resume">
+                            <p ng-bind-html="anchorme(form.how_apply)"></p>
+                        </div>
+                        <button ng-if="form.send_resume" class="custom-btn head-btn send-cv">Apply Now</button>
+                    </div>
+                    <!--End job-post-contact-->
+                </div>
+                <!--End job-post-item-->
+                <div class="gray-box job-post-ads" ng-if="form.highlight_job || form.feature_job">
+                    <div class="row">
+                        <div class="col-md-5" ng-if="form.highlight_job">
+                            <h3 class="subtitle">Job ad highlighted </h3>
+                            <span class="ads-price">For only ${{ highlighted_job_price }}</span>
+                        </div>
+                        <!--End col-md-5-->
+                        <div class="col-md-7" ng-if="form.highlight_job">
+                            <img src="{{img_path}}/assets/highlight.png" />
+                        </div>
+                        <div class="col-md-5" ng-if="form.feature_job">
+                            <h3 class="subtitle">Job ad feature </h3>
+                            <span class="ads-price">For only ${{ featured_job_price }}</span>
+                        </div>
+                        <div class="col-md-7" ng-if="form.feature_job">
+                            <img src="{{img_path}}/assets/feature.png">
+                        </div>
+                        <!--End col-md-7-->
+                    </div>
+                    <!--End row-->
+                </div>
+                <!--End job-post-contact-->
+                <div class="job-post-review">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="#" ng-click="redirectPayment()" class="custom-btn">Looks great! Continue to Step3</a>                            or
+                            <a href="#" ng-click="redirectCreate()" class="custom-links">Make Changes</a>
+                        </div>
+                    </div>
+                    <!--End Row-->
+                </div>
+                <!--End job-post-review-->
+            </div>
+            <!--End job-post-wrap-->
+        </div>
+        <!--End container-->
+    </div>
+    <!--End Page-content-->
+    <div id="pay_page" ng-show="pay_page" class="page-content">
+        <div class="page-head">
+            <div class="container">
+                <a class="page-title" ng-click="redirectReview()">
+                <i class="fa fa-long-arrow-left"></i>
+                back to Preview
+            </a>
+                <div class="wizard-head">
+                    <a href="#" ng-click="redirectCreate()">
+                    <span>1</span>
+                    Create Job Ad
+                </a>
+                    <a href="#" ng-click="redirectReview()">
+                    <span>2</span>
+                    Preview
+                </a>
+                    <a href="#" class="active">
+                    <span>3</span>
+                    Pay
+                </a>
+                </div>
+                <!--End wizard-head-->
+            </div>
+            <!--End container-->
+        </div>
+        <!--End Page-head-->
+        <div class="loader" ng-if="loading">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-wizard">
+                <form class="form" method="post">
+                    <div class="brdr-btm-box margin-bottom-30">
+                        <h2 class="title has-border text-red">
+                            Purchase
+                        </h2>
+                        <span class="small-txt">Ads expire after 30 days</span>
+                    </div>
+                    <div class="gray-box">
+                        <h2 class="subtitle">
+                            Enter Your billing Information - SECURE
+                        </h2>
+                        <h3 class="error-msg">{{ error }}</h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3">Card Number</label>
+                                <div class="col-md-7">
+                                    <div class="form-img">
+                                        <div id="card-number" class="col-xs-7"></div>
+                                        <img src="{{img_path}}/assets/payment.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group visa-expir">
+                                <label class="col-md-3">Expiration</label>
+                                <div class="col-md-7">
+                                    <div id="expiration-date" class="col-xs-7"></div>
+                                    <span>(MM/YY)</span>
+                                </div>
+                            </div>
+                            <div class="form-group zip-form">
+                                <label class="col-md-3">ZIP / Postal Code</label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group ccv-form">
+                                <label class="col-md-3">CCV#</label>
+                                <div class="col-md-7">
+                                    <div id="cvv" class="col-xs-7"></div>
+                                    <span>(MM/YY)</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-7 col-md-offset-3">
+                                        <div class="paypal-method">
+                                            <div class="or-spacer">OR</div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="send-resume">
+                                                <label for="send-resume" class="cat-label">Pay with PayPal</label>
+                                                <div id="paypal-button"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-md-offset-1">
+                                <div class="white-box">
+                                    <p>Your total is ${{ total }} and your ad will run for 30 days after that the ad will expire.
+                                        Post again if you have another ad
+                                    </p>
+                                    <button class="custom-btn" ng-class="{'disable': disable}" ng-click="addJob()" type="button" ng-disabled="disable">Make Payment</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Row-->
+                    </div>
+                    <!--End Box-Content-->
+                </form>
+                <!--End Form-->
+            </div>
+            <!--End Form-Wizard-->
+        </div>
+        <!--End container-->
+    </div>
+    <!--End Page-content-->
+    <div class="thankyou-page" ng-if="job_successfull">
+        <h1>Thank You for Posting a Job.</h1>
+    </div>
+</div>
+<script>
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function startTime() {
+        var today = new Date();
+        today = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds());
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        h = checkTime(h);
+
+        var timeElement = document.getElementById('time');
+        if (timeElement) {
+            timeElement.innerHTML = h + ":" + m + ":" + s + " UTC";
+        }
+
+    }
+    setInterval(function () { startTime() }, 1000);
+
+</script>

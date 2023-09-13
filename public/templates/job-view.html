@@ -1,0 +1,52 @@
+<div class="main" role="main">
+    <div class="page-content">
+        <div class="container">
+            <div class="brdr-btm-box margin-bottom-30">
+                <a href="editprice/" title="Edit Base Price" class="fr edit-price">Edit Price</a>
+                <h2 class="title has-border text-red">
+                    View Jobs
+                </h2>
+            </div>
+            <div class="job-category" ng-repeat="jobs in data">
+                <div class="job-head">
+                    <div class="job-info">
+                        <a class="job-title" href="#" ng-click="editPost(jobs.id)">
+                            {{jobs.job_title}}
+                        </a>
+                        <!--End job-title-->
+                        <span class="new-job" ng-if="(jobs.new_post == '1' ? true : false)">
+                            new
+                        </span>
+                        <!--End new-job-->
+                        <div class="job-price-range" ng-if="jobs.min_range && jobs.max_range">
+                            {{jobs.currency}} ({{jobs.min_range}} - {{jobs.max_range}}) {{jobs.compensation}}
+                        </div>
+                        <!--End job-price-range-->
+                    </div>
+                    <!--End job-info-->
+                    <div class="job-edit">
+                        <a href="#" title="Edit" ng-click="editPost(jobs.id)"><i class="fa fa-edit"></i></a>
+                        <a href="#" ng-click="deletePost(this, jobs.id)" title="Delete"><i class="fa fa-trash"></i></a>
+                    </div>
+                    <!--End job-date-->
+                </div>
+                <!--End job-head-->
+                <div class="job-author">
+                    <h4 class="job-author-name">
+                        {{jobs.about_company}}
+                    </h4>
+                    <!--End job-author-name-->
+                    <div class="job-author-visa" ng-if="jobs.visa_psponcer == 1">
+                        Visa Sponsorship
+                    </div>
+                    <!--End job-author-name-->
+                </div>
+                <!--End job-author-->
+                <ul class="tags">
+                    <li ng-repeat="skill in jobs.key_skills track by $index">{{skill}}</li>
+                </ul>
+                <!--End tags-->
+            </div>
+        </div>
+    </div>
+</div>

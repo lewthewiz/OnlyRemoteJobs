@@ -1,0 +1,100 @@
+<% include ./partials/header %>
+<div class="main" role="main">
+    <div class="page-head">
+        <div class="container">
+            <a class="page-title" href="/">
+                <i class="fa fa-long-arrow-left"></i>
+                back to jobs
+            </a>
+        </div>
+        <!--End container-->
+    </div>
+    <!--End Page-head-->
+    <div class="page-content view-all">
+        <div class="container">
+            <div class="widget">
+                <div class="widget-title brdr-btm-box-orange">
+                    <h2 class="title has-border text-red title-with-background">
+                        <%= category %> Jobs
+                    </h2>
+                </div>
+                <!--End widget-title-->
+                <div class="widget-content">
+                    <% if(data.length == 0){ %>
+                        <h3>No Jobs Posted in This Category.</h3>
+                    <% } %>
+                    <% for(var i=0; i < data.length; i++){ %>
+                    <% if(data[i].highlight_job){ %>
+                    <div class="job-category-yellow job-category">
+                        <% }else{ %>
+                        <div class="job-category">
+                            <% } %>
+                            <div class="job-head">
+                                <div class="job-info">
+                                    <a class="job-title" href="/job/<%= data[i].id %>/<%= data[i].job_title.replace(/ /g, '-').toLowerCase(); %>">
+                                <%= data[i].job_title %>
+                            </a>
+                                    <!--End job-title-->
+                                    <% if(data[i].new_post){ %>
+                                    <span class="new-job">new</span>
+                                    <!--End new-job-->
+                                    <% } %>
+                                    <div class="job-price-range">
+                                        <% if(data[i].min_range && data[i].max_range){ %> 
+                                        (<%=  data[i].currency  %><%=  data[i].min_range  %> - <%=  data[i].currency  %><%=  data[i].max_range  %>) <% } %>
+                                    </div>
+                                    <!--End job-price-range-->
+                                </div>
+                                <!--End job-info-->
+                                <div class="job-date">
+                                    <%= data[i].date %>
+                                </div>
+                                <!--End job-date-->
+                            </div>
+                            <!--End job-head-->
+                            <div class="job-author">
+                                <h4 class="job-author-name">
+                                    <%= data[i].about_company  %>
+                                </h4>
+                                <!--End job-author-name-->
+                                <div class="job-author-visa">                              
+                                    <% if(data[i].visa_psponcer == 1){ %> Visa Sponsorship <% } %>
+                                </div>
+                                <!--End job-author-name-->
+                            </div>
+                            <!--End job-author-->
+                            <ul class="tags">
+                                <% if(data[i].key_skills){ %>
+                                <% for(var j=0; j< data[i].key_skills.length; j++){ %>
+                                <li><%= data[i].key_skills[j] %></li>
+                                <% } } %>
+                            </ul>
+                            <!--End tags-->
+                        </div>
+                        <!--End job-category-->
+                        <% } %>
+                    </div>
+                    <!--End widget-content-->
+                </div>
+                <!--End widget-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>
+
+<script>
+    var img_path = "<%= img_path %>";
+</script>
+
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+</html>
